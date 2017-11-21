@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1 class="text-center">Tâches à accomplir</h1>
+      <ul class="list-unstyled">
+        <% @tasks.each do |tache| %>
+          <li>
+            <h2>
+              <% if tache.completed %>
+                <i class="fa fa-check-square-o" aria-hidden="true"></i>
+              <% else %>
+                <i class="fa fa-square-o" aria-hidden="true"></i>
+              <% end %>
+              <%= link_to tache.title, task_path(tache) %>
+              <%= link_to task_path(tache), method: :delete do %>
+                <i class="fa fa-ban" aria-hidden="true"></i>
+              <% end %>
+            </h2>
+          </li>
+        <% end %>
+      </ul>
+      <%= link_to "New", new_task_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
